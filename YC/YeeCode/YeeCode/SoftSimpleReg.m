@@ -21,7 +21,7 @@ dels = 0.75;
 spatialFactor = 1;
 
 c_c = 299792458;                  % speed of light
-c_eps_0 = 0.8542149e-12;          % vacuum permittivity
+c_eps_0 = 8.8542149e-12;          % vacuum permittivity
 c_mu_0 = 1.2566370614e-6;         % vacuum permeability
 c_eta_0 = sqrt(c_mu_0/c_eps_0);
 
@@ -43,7 +43,7 @@ epi{1} = ones(nx{1},ny{1})*c_eps_0;
 % decreasing nx creates more space, less grating 
 % epi{1}(2:150,55:95)= c_eps_0*11.3;
 %epi{1}(125:150,55:100)= c_eps_0*50;
-epi{1}(125:150,55:95)= c_eps_0*11.3;
+epi{1}(125:150,55:100)= c_eps_0*11.3;
 
 sigma{1} = zeros(nx{1},ny{1});
 sigmaH{1} = zeros(nx{1},ny{1});
@@ -59,7 +59,7 @@ Plot.off = 10;
 Plot.pl = 0;
 Plot.ori = '13';
 Plot.N = 100;
-Plot.MaxEz = 3;
+Plot.MaxEz = 3.5;
 Plot.MaxH = Plot.MaxEz/c_eta_0;
 Plot.pv = [0 0 90];
 Plot.reglim = [0 xMax{1} 0 yMax];
@@ -70,7 +70,7 @@ bc{1}.s(1).xpos = nx{1}/(4) + 1;
 bc{1}.s(1).type = 'c';
 bc{1}.s(1).fct = @PlaneWaveBC;
 % mag = -1/c_eta_0;
-mag = 10; % changes shape
+mag = 1; % changes shape
 phi = 0;
 omega = f*2*pi;
 betap = 0;
