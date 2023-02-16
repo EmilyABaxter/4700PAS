@@ -1,3 +1,5 @@
+% PA 5
+
 clear;
 close all;
 
@@ -46,7 +48,7 @@ for i = 1:nx
 end 
 spy(G);
 
-nmodes = 20;
+nmodes = 9; % 20
 [E,D] = eigs(G ,nmodes,'SM');
 figure('name','Eigenvalues')
 plot(diag(D), '*');
