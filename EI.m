@@ -15,7 +15,7 @@ for i = 1:nx
         if i == 1 
             
             G(n,:) = 0; 
-            G(n,n) = 1; 
+            G(n,n) = -1; 
 
         elseif i == nx
 
@@ -25,14 +25,27 @@ for i = 1:nx
         elseif j == 1 
 
             G(n,:) = 0; 
-            G(n,n) = 1; 
+            G(n,n) = -1; 
 
         elseif j == ny
 
             G(n,:) = 0; 
-            G(n,n) = n; 
+            G(n,n) = n;
 
-        else 
+  %      elseif i > 10 && i < 20 && j > 10 && j < 20
+  %
+  %          nxm = j + (i-2)*ny; 
+  %          nxp = j + (i)*ny;
+  %          nym = j-1 + (i-1)*ny;
+  %          nyp = j+1 + (i-1)*ny;
+  %
+  %          G(n,n) = -2;
+  %          G(n,nxm) = -1;
+  %          G(n,nym) = -1;
+  %          G(n,nxp) = -1;
+  %          G(n,nyp) = -1; 
+
+        else  
             nxm = j + (i-2)*ny; 
             nxp = j + (i)*ny;
             nym = j-1 + (i-1)*ny;
@@ -48,7 +61,7 @@ for i = 1:nx
 end 
 spy(G);
 
-nmodes = 9; % 20
+nmodes = 9; %20;
 [E,D] = eigs(G ,nmodes,'SM');
 figure('name','Eigenvalues')
 plot(diag(D), '*');
